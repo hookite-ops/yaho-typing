@@ -188,6 +188,10 @@ button,select,label.chk{touch-action:manipulation;user-select:none;-webkit-user-
  .stamps{right:8px;top:8px}.stamp{width:66px;height:66px;border-width:3px}.stamp b{font-size:15px}.stamp small{font-size:8px}
  .rec-grid{grid-template-columns:1fr}
 }
+nav .fs{margin-left:6px;border-left:1px solid var(--line);border-radius:0 11px 11px 0}
+:fullscreen{background:var(--bg);overflow:auto}
+:fullscreen .wrap{max-width:1280px}
+@media (max-width:720px){nav .fs{flex:0 0 auto;padding:10px 10px;font-size:0;margin-left:2px}nav .fs::before{content:"⛶";font-size:17px}}
 </style>
 </head>
 <body>
@@ -208,6 +212,7 @@ button,select,label.chk{touch-action:manipulation;user-select:none;-webkit-user-
     <button data-tab="rain">야호비</button>
     <button data-tab="board">도장판</button>
     <button data-tab="rec">기록</button>
+    <button id="fsBtn" class="fs" aria-label="전체화면">⛶ 전체화면</button>
   </nav>
 
   <!-- 낱말 연습 -->
@@ -512,7 +517,7 @@ mClose.onclick=()=>modal.classList.remove('on');
 /* ===================== 탭 ===================== */
 let curTab='word';
 function go(tab){
-  document.querySelectorAll('nav button').forEach(x=>x.classList.toggle('on',x.dataset.tab===tab));
+  document.querySelectorAll('nav button[data-tab]').forEach(x=>x.classList.toggle('on',x.dataset.tab===tab));
   document.querySelectorAll('.panel').forEach(p=>p.classList.toggle('on',p.id==='p-'+tab));
   if(curTab==='rain'&&tab!=='rain')Rain.pause();
   curTab=tab;
@@ -522,7 +527,7 @@ function go(tab){
   if(tab==='rec')renderRec();
   if(tab==='rain')Rain.resume();
 }
-document.querySelectorAll('nav button').forEach(b=>b.onclick=()=>go(b.dataset.tab));
+document.querySelectorAll('nav button[data-tab]').forEach(b=>b.onclick=()=>go(b.dataset.tab));
 
 /* ===================== 낱말 연습 ===================== */
 const W={list:[],idx:0,start:0,cc:0,total:0,cpms:[],fresh:0,combo:0,st:{bad:false,dirty:false},custom:null};
@@ -760,6 +765,15 @@ recDrill.onclick=()=>{
   const pool=POOL.filter(x=>strokes(x.city).some(j=>set.has(j)));
   if(!pool.length)return;W.custom=pool;go('word');wNewRound();
 };
+
+/* 전체화면 */
+(()=>{const el=document.documentElement,req=el.requestFullscreen||el.webkitRequestFullscreen;
+  if(!req){fsBtn.style.display='none';return;}
+  const isFs=()=>document.fullscreenElement||document.webkitFullscreenElement;
+  fsBtn.onclick=()=>{if(isFs())(document.exitFullscreen||document.webkitExitFullscreen).call(document);else{const r=req.call(el,{navigationUI:'hide'});r&&r.catch&&r.catch(()=>{});}};
+  const upd=()=>{fsBtn.textContent=isFs()?'⛶ 나가기':'⛶ 전체화면';};
+  document.addEventListener('fullscreenchange',upd);document.addEventListener('webkitfullscreenchange',upd);
+})();
 
 /* 클릭하면 입력칸으로 */
 document.getElementById('p-word').addEventListener('mousedown',e=>{if(!e.target.closest('select,button,input,label'))setTimeout(()=>wInput.focus());});
