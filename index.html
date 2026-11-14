@@ -163,7 +163,7 @@ button,select,label.chk{touch-action:manipulation;user-select:none;-webkit-user-
 .bars i span{position:absolute;top:-16px;left:50%;transform:translateX(-50%);font-size:10px;font-style:normal;color:var(--mute)}
 .legend{font-size:12px;color:var(--mute);margin-top:8px}
 .legend em{display:inline-block;width:10px;height:10px;border-radius:3px;margin:0 4px 0 10px;vertical-align:middle}
-@media (pointer:coarse){.kb,.kb-toggle{display:none!important}.next-hint{display:inline-flex}}
+.touch .kb,.touch .kb-toggle{display:none!important}.touch .next-hint{display:inline-flex}
 @media (max-width:720px){
  .wrap{padding:max(14px,env(safe-area-inset-top)) max(14px,env(safe-area-inset-right)) calc(24px + env(safe-area-inset-bottom,0px)) max(14px,env(safe-area-inset-left))}
  header{flex-direction:column;align-items:flex-start;gap:10px;margin-bottom:12px}
@@ -192,6 +192,66 @@ nav .fs{margin-left:6px;border-left:1px solid var(--line);border-radius:0 11px 1
 :fullscreen{background:var(--bg);overflow:auto}
 :fullscreen .wrap{max-width:1280px}
 @media (max-width:720px){nav .fs{flex:0 0 auto;padding:10px 10px;font-size:0;margin-left:2px}nav .fs::before{content:"⛶";font-size:17px}}
+
+/* 전국 일주 */
+.tour-head{display:flex;align-items:baseline;gap:12px;margin-bottom:14px;flex-wrap:wrap}
+.tour-head h2{font-family:Jua;font-weight:400;font-size:28px;margin:0}
+.tour-head span{color:var(--mute);font-size:14px}
+.tour{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:10px}
+.stage{display:flex;align-items:center;gap:12px;text-align:left;font:inherit;color:inherit;background:#fff;border:1px solid var(--line);border-radius:16px;padding:12px 14px;cursor:pointer;transition:transform .1s ease-out}
+.stage:active{transform:scale(.98)}
+.stage .no{font-family:Jua;font-size:20px;width:40px;height:40px;border-radius:50%;background:var(--coral);color:#fff;display:flex;align-items:center;justify-content:center;flex:none}
+.stage .nm{flex:1;font-weight:700}.stage .nm small{display:block;font-weight:500;font-size:12px;color:var(--mute);margin-top:2px}
+.stage .st{color:#f2b01e;font-size:18px;letter-spacing:1px}.stage .st i{color:var(--line);font-style:normal}
+.stage.lock{opacity:.5;cursor:default}.stage.lock .no{background:var(--mute)}
+.stage.clear{border-color:#ffc4ba}
+.stagebar{display:flex;align-items:center;justify-content:space-between;gap:10px;background:var(--coral-soft);border-radius:12px;padding:8px 8px 8px 14px;margin-bottom:12px;font-size:14px}
+.stagebar[hidden]{display:none}
+.staged .toolbar select,.staged .toolbar .chk,.staged #wRestart{display:none}
+/* 업적·레벨 */
+.ach{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:8px}
+.ach div{border:1px dashed var(--line);border-radius:12px;padding:10px;font-size:12px;color:var(--mute);opacity:.6}
+.ach div b{display:block;font-size:14px;color:var(--ink);margin-bottom:2px}
+.ach div.got{border:1px solid #ffc4ba;background:var(--coral-soft);opacity:1}
+.lvrow{display:flex;align-items:center;gap:16px}
+.stamp.sm b{font-size:15px;padding:0 8px;text-align:center}
+nav .ic{padding:10px 12px;margin-left:4px}
+/* 야호비 아이템 */
+.drop.ice{background:#e3f4fb;border-color:#9fd3ea}
+.drop.bomb{background:#3a2b2b;color:#fff;border-color:#3a2b2b}
+.drop.heart{background:#ffe1dc;border-color:#ff9d92}
+.rain-wrap.frozen{box-shadow:inset 0 0 0 4px #9fd3ea}
+.modal .btn{margin:0 2px}
+/* 다크 모드 */
+[data-theme=dark]{--bg:#1d1819;--card:#292224;--ink:#f4eae7;--mute:#a99a9b;--line:#40363a;--coral-soft:#4d2b29;--sea-soft:#203c47;--peach:#c9765f;color-scheme:dark}
+[data-theme=dark] body{background:var(--bg)}
+[data-theme=dark] nav,[data-theme=dark] select,[data-theme=dark] .btn:not(.primary),[data-theme=dark] .key,[data-theme=dark] .type-in,[data-theme=dark] .region,[data-theme=dark] .drop,[data-theme=dark] .stage{background:#322a2d;color:var(--ink)}
+[data-theme=dark] .btn.ghost{background:transparent}
+[data-theme=dark] .key{box-shadow:0 3px 0 #151112;color:#e6d8d5}
+[data-theme=dark] .key.hint{background:var(--coral);color:#fff}
+[data-theme=dark] .key.hint-bad{background:var(--bad)}
+[data-theme=dark] .key.hint-done{background:var(--sea)}
+[data-theme=dark] .rain-wrap{background:linear-gradient(#1f2f38,#2a2224 75%)}
+[data-theme=dark] .ground{background:repeating-linear-gradient(90deg,#5a3a34 0 18px,#4d322d 18px 36px);border-top-color:#7a4a40}
+[data-theme=dark] .overlay{background:rgba(29,24,25,.88)}
+[data-theme=dark] .stamp{background:rgba(41,34,36,.94)}
+[data-theme=dark] .region.full{background:#3a2a2a}
+[data-theme=dark] .chip{color:#8f7f80;border-color:#4a3f43}
+[data-theme=dark] .chip.got{color:#ffb3a8;border-color:#7a4540}
+[data-theme=dark] .drop.gold{color:#3a2b2b;background:linear-gradient(#fff3c4,#ffe08a)}
+[data-theme=dark] .drop.bomb{background:#f4eae7;color:#1d1819}
+[data-theme=dark] .drop.ice{background:#1f3a44}
+[data-theme=dark] .drop.heart{background:#5a2f2c}
+[data-theme=dark] .queue{color:#6f6163}
+[data-theme=dark] .weak b{color:#ffb3a8}
+@media (max-width:720px){
+ nav{overflow-x:auto;scrollbar-width:none}
+ nav button{flex:1 0 auto;padding:10px 7px;font-size:13px}
+ nav .ic{padding:10px 7px;font-size:13px}
+ .tour{grid-template-columns:1fr}.tour-head h2{font-size:23px}
+ .ach{grid-template-columns:1fr 1fr}
+ .stagebar{font-size:12px}
+}
 </style>
 </head>
 <body>
@@ -202,22 +262,33 @@ nav .fs{margin-left:6px;border-left:1px solid var(--line);border-radius:0 11px 1
       <div class="pill">모은 도장<b id="sumStamps">0</b></div>
       <div class="pill">오늘 야호<b id="sumToday">0/30</b></div>
       <div class="pill">연속<b id="sumStreak">0일</b></div>
-      <div class="pill">최고 타수<b id="sumBest">0</b></div>
+      <div class="pill">레벨<b id="sumLv">1</b></div>
     </div>
   </header>
 
   <nav>
+    <button data-tab="tour">일주</button>
     <button data-tab="word" class="on">낱말</button>
     <button data-tab="long">긴 글</button>
     <button data-tab="rain">야호비</button>
     <button data-tab="board">도장판</button>
     <button data-tab="rec">기록</button>
+    <button id="thBtn" class="ic" aria-label="다크 모드">다크</button>
     <button id="fsBtn" class="fs" aria-label="전체화면">⛶ 전체화면</button>
   </nav>
+
+  <!-- 전국 일주 -->
+  <section class="panel" id="p-tour">
+    <div class="card">
+      <div class="tour-head"><h2>전국 일주</h2><span id="tourSum"></span></div>
+      <div class="tour" id="tourList"></div>
+    </div>
+  </section>
 
   <!-- 낱말 연습 -->
   <section class="panel on" id="p-word">
     <div class="card">
+      <div class="stagebar" id="wStage" hidden><b id="wStageTxt"></b><button class="btn ghost" id="wQuit">그만두기</button></div>
       <div class="toolbar">
         <select id="wScope"></select>
         <select id="wLen"><option value="s">짧게 (야호만)</option><option value="m" selected>한 문장</option><option value="l">긴 문장</option></select>
@@ -276,6 +347,7 @@ nav .fs{margin-left:6px;border-left:1px solid var(--line);border-radius:0 11px 1
         <div class="stats">
           <div class="stat"><span>점수</span><b id="rScore">0</b></div>
           <div class="stat"><span>단계</span><b id="rLevel">1</b></div>
+          <div class="stat"><span>콤보</span><b id="rCombo">0</b></div>
           <div class="stat"><span>최고</span><b id="rBest">0</b></div>
         </div>
       </div>
@@ -283,8 +355,9 @@ nav .fs{margin-left:6px;border-left:1px solid var(--line);border-radius:0 11px 1
         <div class="ground"></div>
         <div class="overlay" id="rOverlay">
           <h2>야호비</h2>
-          <p>하늘에서 떨어지는 "○○ 야호!"를 땅에 닿기 전에 쳐서 없애세요.<br>노란 단어는 점수 3배! 땅에 5번 닿으면 끝나요.</p>
-          <button class="btn primary" id="rStart">시작하기</button>
+          <p>하늘에서 떨어지는 "○○ 야호!"를 땅에 닿기 전에 쳐서 없애세요.<br>노랑은 점수 3배 · ❄ 느려짐 · ✸ 전부 터짐 · ♥ 목숨 +1<br>연속으로 맞히면 콤보 배수! 땅에 5번 닿으면 끝나요.</p>
+          <button class="btn primary" id="rStart">야호비 시작</button>
+          <button class="btn ghost" id="tStart">60초 도전</button>
         </div>
       </div>
       <div class="rain-bottom">
@@ -313,6 +386,7 @@ nav .fs{margin-left:6px;border-left:1px solid var(--line);border-radius:0 11px 1
   <!-- 기록 -->
   <section class="panel" id="p-rec">
     <div class="card"><div class="rec-grid">
+      <div class="rec wide" id="recLv"></div>
       <div class="rec"><h3>오늘의 목표</h3>
         <div class="big-num"><span id="recToday">0</span><small> / 30 야호</small></div>
         <div class="progress"><i id="recBar"></i></div><p id="recStreak"></p></div>
@@ -320,6 +394,7 @@ nav .fs{margin-left:6px;border-left:1px solid var(--line);border-radius:0 11px 1
         <button class="btn primary" id="recDrill" style="margin-top:6px">약점 집중 연습</button></div>
       <div class="rec wide"><h3>최근 타수</h3><div class="bars" id="recBars"></div>
         <div class="legend"><em style="background:var(--peach);margin-left:0"></em>낱말<em style="background:var(--sea)"></em>긴 글</div></div>
+      <div class="rec wide"><h3>업적 <span id="achCnt" style="color:var(--mute);font-weight:500;font-size:13px"></span></h3><div class="ach" id="recAch"></div></div>
     </div></div>
   </section>
 
@@ -332,6 +407,7 @@ nav .fs{margin-left:6px;border-left:1px solid var(--line);border-radius:0 11px 1
   <div class="res-grid" id="mGrid"></div>
   <div class="new-best" id="mBest"></div>
   <button class="btn primary" id="mAgain">한 번 더</button>
+  <button class="btn ghost" id="mShare">공유</button>
   <button class="btn ghost" id="mClose">닫기</button>
 </div></div>
 
@@ -361,9 +437,10 @@ const TOTAL = POOL.length;
 
 /* ===================== 저장 ===================== */
 const SKEY='yaho-typing-v1';
-const fresh=()=>({stamps:{},best:{word:0,long:0,rain:0},yaho:0,keys:{},days:{},hist:[]});
+const fresh=()=>({stamps:{},best:{word:0,long:0,rain:0,time:0},yaho:0,keys:{},days:{},hist:[],xp:0,ach:{},tour:{},maxCombo:0,theme:null});
 let save=fresh();
 try{const s=JSON.parse(localStorage.getItem(SKEY)); if(s) save=Object.assign(save,s);}catch(e){}
+save.best=Object.assign({word:0,long:0,rain:0,time:0},save.best);
 function persist(){try{localStorage.setItem(SKEY,JSON.stringify(save));}catch(e){}}
 
 /* ===================== 한글 분해 ===================== */
@@ -385,6 +462,7 @@ const SHIFTMAP={'ㅃ':'q','ㅉ':'w','ㄸ':'e','ㄲ':'r','ㅆ':'t','ㅒ':'o','ㅖ
 const esc=s=>s.replace(/[&<>]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;'}[c]));
 const hasLatin=s=>/[a-zA-Z]/.test(s);
 const COARSE=matchMedia('(pointer:coarse)').matches;
+document.documentElement.classList.toggle('touch',COARSE);
 const GOAL=30;
 const dayKey=(d=new Date())=>d.toLocaleDateString('sv');
 function streak(){let n=0;const d=new Date();if(!save.days[dayKey(d)])d.setDate(d.getDate()-1);
@@ -489,30 +567,72 @@ function collect(item){
   save.yaho++;const dk=dayKey();save.days[dk]=(save.days[dk]||0)+1;
   const isNew=!save.stamps[item.key];
   save.stamps[item.key]=(save.stamps[item.key]||0)+1;
-  persist();updateSummary();
+  addXp(isNew?30:10);persist();updateSummary();
   if(isNew){showStamp(item.city);navigator.vibrate&&navigator.vibrate(25);}
   return isNew;
 }
-function showStamp(city){
+function showStamp(city,top='YAHO',bot='도장 GET'){
   const box=document.getElementById('stamps');
-  const s=document.createElement('div');s.className='stamp';
-  s.innerHTML=`<small>YAHO</small><b>${esc(city)}</b><small>도장 GET</small>`;
+  const s=document.createElement('div');s.className='stamp'+([...city].length>4?' sm':'');
+  s.innerHTML=`<small>${top}</small><b>${esc(city)}</b><small>${bot}</small>`;
   box.appendChild(s);while(box.children.length>(innerWidth<720?1:4))box.firstChild.remove();
   setTimeout(()=>s.remove(),2400);
 }
 function updateSummary(){
   const got=Object.keys(save.stamps).length;
   sumStamps.textContent=`${got}/${TOTAL}`;sumToday.textContent=`${save.days[dayKey()]||0}/${GOAL}`;sumStreak.textContent=streak()+'일';
-  sumBest.textContent=Math.max(save.best.word,save.best.long);
+  sumLv.textContent=lvOf(save.xp);checkAch();
 }
-function showModal(title,items,bestMsg,again){
+let modalClose=null,shareText='';
+function showModal(title,items,bestMsg,again,onClose,againLabel='한 번 더'){
+  document.activeElement&&document.activeElement.blur();
   mTitle.textContent=title;
   mGrid.innerHTML=items.map(([k,v])=>`<div><span>${k}</span><b>${v}</b></div>`).join('');
-  mBest.textContent=bestMsg||'';
-  modal.classList.add('on');
+  mBest.textContent=bestMsg||'';mAgain.textContent=againLabel;mShare.textContent='공유';
+  shareText=`[전국 야호 타자] ${title} ${items.map(([k,v])=>k+' '+v).join(' · ')}`;
+  modal.classList.add('on');modalClose=onClose||null;
   mAgain.onclick=()=>{modal.classList.remove('on');again();};
 }
-mClose.onclick=()=>modal.classList.remove('on');
+mClose.onclick=()=>{modal.classList.remove('on');modalClose&&modalClose();};
+mShare.onclick=async()=>{
+  const url=location.protocol.startsWith('http')?location.href:'';
+  try{if(navigator.share){await navigator.share({text:shareText,url:url||undefined});return;}
+    await navigator.clipboard.writeText(shareText+(url?' '+url:''));mShare.textContent='복사됨!';}catch(e){}
+};
+
+/* ===================== 레벨·업적 ===================== */
+const TITLES=[[1,'동네 산책러'],[3,'시내버스 여행자'],[5,'기차 여행자'],[8,'전국 여행가'],[12,'야호 장인'],[16,'전국구 야호왕'],[20,'야호의 전설']];
+const lvOf=xp=>Math.floor(Math.sqrt((xp||0)/60))+1;
+const lvXp=l=>(l-1)*(l-1)*60;
+const titleOf=l=>TITLES.filter(t=>l>=t[0]).pop()[1];
+function addXp(n){const b=lvOf(save.xp);save.xp=(save.xp||0)+n;const a=lvOf(save.xp);if(a>b)showStamp('Lv.'+a,'LEVEL','UP!');}
+const TOUR=['gyeongnam','busan','ulsan','gyeongbuk','daegu','gangwon','chungbuk','sejong','daejeon','chungnam','jeonbuk','gwangju','jeonnam','jeju','incheon','gyeonggi','seoul'];
+const stampN=()=>Object.keys(save.stamps).length;
+const tourN=()=>Object.values(save.tour).filter(x=>x>0).length;
+const starN=()=>Object.values(save.tour).reduce((a,b)=>a+b,0);
+const bestCpm=()=>Math.max(save.best.word,save.best.long);
+const ACH=[
+ ['first','첫 야호','처음으로 야호를 외쳤다',()=>save.yaho>=1],
+ ['gj','시작은 거제','거제 도장을 찍었다',()=>!!save.stamps['gyeongnam:거제']],
+ ['y100','야호 100번','야호를 100번 외쳤다',()=>save.yaho>=100],
+ ['y1000','목이 쉬었다','야호를 1000번 외쳤다',()=>save.yaho>=1000],
+ ['goal','오늘 목표 달성','하루에 30야호',()=>(save.days[dayKey()]||0)>=GOAL],
+ ['s3','3일 연속','3일 연속으로 연습했다',()=>streak()>=3],
+ ['s7','일주일 개근','7일 연속으로 연습했다',()=>streak()>=7],
+ ['st50','도장 수집가','도장 50개를 모았다',()=>stampN()>=50],
+ ['region','우리 동네 완성','시·도 하나의 도장을 전부 모았다',()=>REGIONS.some(r=>r.cities.every(c=>save.stamps[r.id+':'+c]))],
+ ['stall','전국 제패','도장 219개를 전부 모았다',()=>stampN()>=TOTAL],
+ ['c10','10콤보','안 틀리고 10문장 연속',()=>save.maxCombo>=10],
+ ['cpm300','300타','평균 300타를 넘겼다',()=>bestCpm()>=300],
+ ['cpm500','500타','평균 500타를 넘겼다',()=>bestCpm()>=500],
+ ['rain','우산은 필요 없어','야호비 500점',()=>save.best.rain>=500],
+ ['t10','60초의 승부','60초 도전에서 10문장',()=>save.best.time>=10],
+ ['tour5','여행 시작','전국 일주 5곳 통과',()=>tourN()>=5],
+ ['tour17','전국 일주 완주','17곳을 모두 통과했다',()=>tourN()>=17],
+ ['star','별 수집가','전국 일주 별 51개',()=>starN()>=51],
+];
+function checkAch(){let got=false;ACH.forEach(([id,name,,test])=>{if(!save.ach[id]&&test()){save.ach[id]=dayKey();showStamp(name,'업적','달성!');addXp(50);got=true;}});
+  if(got){persist();sumLv.textContent=lvOf(save.xp);}}
 
 /* ===================== 탭 ===================== */
 let curTab='word';
@@ -525,6 +645,7 @@ function go(tab){
   if(tab==='long')document.querySelector('#lLines .active input')?.focus();
   if(tab==='board')renderBoard();
   if(tab==='rec')renderRec();
+  if(tab==='tour')renderTour();
   if(tab==='rain')Rain.resume();
 }
 document.querySelectorAll('nav button[data-tab]').forEach(b=>b.onclick=()=>go(b.dataset.tab));
@@ -533,10 +654,26 @@ document.querySelectorAll('nav button[data-tab]').forEach(b=>b.onclick=()=>go(b.
 const W={list:[],idx:0,start:0,cc:0,total:0,cpms:[],fresh:0,combo:0,st:{bad:false,dirty:false},custom:null};
 fillScope(wScope);buildKb(wKb);
 function wNewRound(){
-  W.list=makeItems(wScope.value,{s:20,m:15,l:10}[wLen.value],wNew.checked,wLen.value,W.custom);
+  if(W.stage){W.list=makeItems(W.stage.id,8,false,tourLen(W.stage.i));
+    if(W.stage.i===0&&!save.tour.gyeongnam){const gj=POOL.find(x=>x.key==='gyeongnam:거제');W.list[0]={...gj,text:'거제에 도착했다, 거제 야호!',extra:[]};}}
+  else if(W.timed){W.list=makeItems('all',120,false,wLen.value);W.timed={end:0};}
+  else W.list=makeItems(wScope.value,{s:20,m:15,l:10}[wLen.value],wNew.checked,wLen.value,W.custom);
+  W.ok=0;wModeUI();
   W.st={bad:false,dirty:false};W.idx=0;W.cc=0;W.total=0;W.cpms=[];W.fresh=0;W.start=0;
   clearInput(wInput);wRender();
 }
+function wProgUI(){
+  if(W.timed){const left=W.timed.end?Math.max(0,Math.ceil((W.timed.end-performance.now())/1000)):60;
+    wProg.textContent=left+'초';wBar.style.width=(100-left/60*100)+'%';}
+  else{wProg.textContent=`${W.idx}/${W.list.length}`;wBar.style.width=(W.idx/W.list.length*100)+'%';}
+}
+function wModeUI(){
+  const on=!!(W.stage||W.timed);document.getElementById('p-word').classList.toggle('staged',on);wStage.hidden=!on;
+  if(W.stage){const r=REGIONS.find(x=>x.id===W.stage.id);wStageTxt.textContent=`전국 일주 ${W.stage.i+1}/17 · ${r.name} · 목표 ${tourTarget(W.stage.i)}타`;}
+  else if(W.timed)wStageTxt.textContent='60초 도전 · 첫 글자를 치면 시작';
+}
+function startTimed(){W.stage=null;W.custom=null;W.timed={end:0};go('word');wNewRound();}
+wQuit.onclick=()=>{const t=W.stage?'tour':'word';W.stage=null;W.timed=null;wNewRound();go(t);};
 function wRender(){
   const it=W.list[W.idx];const v=wInput.value;
   wRegion.textContent=it.gname;
@@ -544,8 +681,7 @@ function wRender(){
   const tn=[...it.text].length,nar=innerWidth<720;
   wTarget.style.fontSize=tn<=9?'':(tn<=22?(nar?'25px':'40px'):(nar?'21px':'31px'));
   wQueue.innerHTML=W.list.slice(W.idx+1,W.idx+(tn<=9?4:(nar?2:3))).map(x=>`<span>${x.text}</span>`).join('');
-  wProg.textContent=`${W.idx}/${W.list.length}`;
-  wBar.style.width=(W.idx/W.list.length*100)+'%';
+  wProgUI();
   setHint(wKb,it.text,v);wHint.textContent=nextKey(it.text,v);
   wCombo.textContent=W.combo>=2?W.combo+' 콤보!':'';
   wWarn.textContent=hasLatin(v)?'영문으로 입력되고 있어요. 한/영 키를 눌러 한글로 바꿔주세요.':'';
@@ -557,12 +693,12 @@ function wLiveCpm(){
   if(min>0.002)wCpm.textContent=Math.round(sc.cs/min);
 }
 function wFinish(){
-  const it=W.list[W.idx];const v=wInput.value;if(!v.trim())return;
+  const it=W.list[W.idx];const v=wInput.value;if(!it||!v.trim()||modal.classList.contains('on'))return;
   const sc=lineScore(it.text,v);
   const min=Math.max((performance.now()-(W.start||performance.now()))/60000,0.001);
   const cpm=Math.round(sc.cs/min);W.cpms.push(Math.min(cpm,2000));
   W.cc+=sc.cc;W.total+=sc.total;trackDone(it.text);
-  if(v===it.text){if(collect(it))W.fresh++;(it.extra||[]).forEach(o=>{if(collect(o))W.fresh++;});W.combo=W.st.dirty?0:W.combo+1;
+  if(v===it.text){if(collect(it))W.fresh++;(it.extra||[]).forEach(o=>{if(collect(o))W.fresh++;});W.ok++;W.combo=W.st.dirty?0:W.combo+1;if(W.combo>save.maxCombo)save.maxCombo=W.combo;
     if(W.combo>=2){wCombo.classList.remove('bump');void wCombo.offsetWidth;wCombo.classList.add('bump');}}
   else{W.combo=0;wInput.classList.add('shake');setTimeout(()=>wInput.classList.remove('shake'),300);}
   W.st={bad:false,dirty:false};persist();
@@ -571,15 +707,34 @@ function wFinish(){
   wRender();
 }
 function wEnd(){
-  const avg=Math.round(W.cpms.reduce((a,b)=>a+b,0)/W.cpms.length);
-  const acc=Math.round(W.cc/W.total*100);
-  let best='';if(avg>save.best.word&&acc>=80){save.best.word=avg;persist();best='최고 타수 갱신!';}
-  logRun('word',avg,acc);updateSummary();wBar.style.width='100%';wProg.textContent=`${W.list.length}/${W.list.length}`;
-  showModal(W.list.length+'문장 완주!',[['평균 타수',avg],['정확도',acc+'%'],['새 도장',W.fresh+'개'],['최고 기록',save.best.word]],best,wNewRound);
+  const n=W.cpms.length,avg=n?Math.round(W.cpms.reduce((a,b)=>a+b,0)/n):0,acc=W.total?Math.round(W.cc/W.total*100):100;
+  let best='';if(n>=5&&avg>save.best.word&&acc>=80){save.best.word=avg;best='최고 타수 갱신!';}
+  if(n)logRun('word',avg,acc);
+  const reset=()=>{W.stage=null;W.timed=null;wNewRound();};
+  if(W.timed){
+    const cnt=W.ok;W.timed=null;if(cnt>save.best.time){save.best.time=cnt;best='60초 최고 기록!';}
+    addXp(cnt*3);persist();updateSummary();
+    showModal('60초 끝!',[['완성한 문장',cnt],['평균 타수',avg],['정확도',acc+'%'],['최고 기록',save.best.time+'문장']],best,()=>{W.timed={end:0};wNewRound();wInput.focus();},reset);
+    return;
+  }
+  if(W.stage){
+    const {i,id}=W.stage,tg=tourTarget(i),r=REGIONS.find(x=>x.id===id),last=i===TOUR.length-1;
+    const st=acc<85?0:(acc>=97&&avg>=tg?3:(acc>=93?2:1));
+    if(st>(save.tour[id]||0))save.tour[id]=st;
+    addXp(20+st*40);persist();updateSummary();
+    const msg=st?('★'.repeat(st)+'☆'.repeat(3-st)+(st<3?` · 별 3개는 정확도 97%, ${tg}타`:'')):'정확도 85%를 넘겨야 통과해요';
+    showModal(st?(last?'전국 일주 완주!':r.name+' 통과!'):'다시 도전!',[['평균 타수',avg],['정확도',acc+'%'],['목표',tg+'타'],['새 도장',W.fresh+'개']],msg,
+      ()=>{if(st&&!last)W.stage={i:i+1,id:TOUR[i+1]};wNewRound();wInput.focus();},()=>{reset();go('tour');},st&&!last?'다음 지역':'다시 하기');
+    return;
+  }
+  addXp(30);persist();updateSummary();
+  showModal(W.list.length+'문장 완주!',[['평균 타수',avg],['정확도',acc+'%'],['새 도장',W.fresh+'개'],['최고 기록',save.best.word]],best,wNewRound,reset);
 }
 wInput.addEventListener('input',()=>{
+  if(modal.classList.contains('on')||!W.list[W.idx]){wInput.value='';return;}
   val(wInput);
   if(!W.start&&wInput.value)W.start=performance.now();
+  if(W.timed&&!W.timed.end&&wInput.value){W.timed.end=performance.now()+60000;wStageTxt.textContent='60초 도전 · 달려!';}
   trackMiss(W.st,W.list[W.idx].text,wInput.value);
   wRender();wLiveCpm();
   const it=W.list[W.idx];
@@ -587,7 +742,9 @@ wInput.addEventListener('input',()=>{
 });
 onEnter(wInput,wFinish);
 wRestart.onclick=()=>{W.custom=null;wNewRound();};wScope.onchange=wRestart.onclick;wNew.onchange=wRestart.onclick;wLen.onchange=wNewRound;
-setInterval(()=>{if(curTab==='word')wLiveCpm();if(curTab==='long')lLiveCpm();},250);
+setInterval(()=>{
+  if(W.timed&&W.timed.end&&!modal.classList.contains('on')){if(performance.now()>=W.timed.end)wEnd();else wProgUI();}
+  if(curTab==='word')wLiveCpm();if(curTab==='long')lLiveCpm();},250);
 
 /* ===================== 긴 글 연습 ===================== */
 const L={lines:[],items:[],idx:0,start:0,cc:0,total:0,cpms:[],fresh:0,st:{bad:false,dirty:false}};
@@ -655,24 +812,25 @@ function lFinish(inp){
 function lEnd(){
   const avg=Math.round(L.cpms.reduce((a,b)=>a+b,0)/L.cpms.length);const acc=Math.round(L.cc/L.total*100);
   let best='';if(avg>save.best.long&&acc>=80){save.best.long=avg;persist();best='최고 타수 갱신!';}
-  logRun('long',avg,acc);updateSummary();lProg.textContent=`${L.N}/${L.N}`;
-  showModal('긴 글 완주!',[['평균 타수',avg],['정확도',acc+'%'],['새 도장',L.fresh+'개'],['최고 기록',save.best.long]],best,lNew);
+  logRun('long',avg,acc);addXp(30);persist();updateSummary();lProg.textContent=`${L.N}/${L.N}`;
+  showModal('긴 글 완주!',[['평균 타수',avg],['정확도',acc+'%'],['새 도장',L.fresh+'개'],['최고 기록',save.best.long]],best,lNew,lNew);
 }
 lRestart.onclick=lNew;lScope.onchange=lNew;lLen.onchange=lNew;
 
 /* ===================== 야호비 ===================== */
 const Rain=(()=>{
-  let drops=[],score=0,level=1,lives=5,cleared=0,running=false,paused=false,lastT=0,spawnT=0,raf=0;
+  let drops=[],score=0,level=1,lives=5,cleared=0,running=false,paused=false,lastT=0,spawnT=0,raf=0,combo=0,slowUntil=0;
   const H=()=>rArea.clientHeight,Wd=()=>rArea.clientWidth;
   rBest.textContent=save.best.rain;
   function hearts(){rHearts.textContent='♥'.repeat(lives)+'♡'.repeat(5-lives);}
   function spawn(){
     const it=POOL[Math.random()*POOL.length|0];
     const el=document.createElement('div');el.className='drop';
-    const gold=Math.random()<0.1;if(gold)el.classList.add('gold');
-    el.textContent=it.text;rArea.appendChild(el);
+    const r=Math.random(),type=r<0.1?'gold':r<0.14?'ice':r<0.17?'bomb':(r<0.2&&lives<5)?'heart':'',gold=type==='gold';
+    if(type)el.classList.add(type);
+    el.textContent=({ice:'❄ ',bomb:'✸ ',heart:'♥ '}[type]||'')+it.text;rArea.appendChild(el);
     const m=Math.min(90,Wd()*0.24);const x=m+Math.random()*(Wd()-m*2);
-    drops.push({it,el,x,y:-30,gold,v:(28+level*7)*(0.85+Math.random()*0.3)*H()/500*(COARSE?0.8:1)});
+    drops.push({it,el,x,y:-30,gold,type,v:(28+level*7)*(0.85+Math.random()*0.3)*H()/500*(COARSE?0.8:1)});
   }
   function frame(t){
     if(!running||paused)return;
@@ -681,15 +839,21 @@ const Rain=(()=>{
     if(spawnT<=0){spawn();spawnT=Math.max(650,2300-level*160)*(COARSE?1.5:1);}
     const ground=H()-34-20;
     for(const d of drops.slice()){
-      d.y+=d.v*dt;d.el.style.left=d.x+'px';d.el.style.top=d.y+'px';
-      if(d.y>ground){remove(d);lives--;hearts();rArea.animate([{background:'#ffd9d9'},{background:''}],{duration:300});
+      d.y+=d.v*dt*(t<slowUntil?0.35:1);d.el.style.left=d.x+'px';d.el.style.top=d.y+'px';
+      if(d.y>ground){remove(d);lives--;hearts();combo=0;rCombo.textContent=0;rArea.animate([{background:'#ffd9d9'},{background:''}],{duration:300});
         if(lives<=0){over();return;}}
     }
     raf=requestAnimationFrame(frame);
   }
   function remove(d){d.el.remove();drops=drops.filter(x=>x!==d);}
-  function pop(d){
-    const pts=(10+level*2)*(d.gold?3:1);score+=pts;cleared++;
+  function pop(d,chain){
+    combo++;rCombo.textContent=combo;const mult=Math.min(3,1+Math.floor(combo/5)*0.5);
+    const pts=Math.round((10+level*2)*(d.gold?3:1)*mult);score+=pts;cleared++;
+    if(!chain){
+      if(d.type==='ice'){slowUntil=performance.now()+6000;rArea.classList.add('frozen');setTimeout(()=>{if(performance.now()>=slowUntil-100)rArea.classList.remove('frozen');},6000);}
+      if(d.type==='heart'){lives=Math.min(5,lives+1);hearts();}
+      if(d.type==='bomb')drops.filter(o=>o!==d).forEach(o=>pop(o,true));
+    }
     const p=document.createElement('div');p.className='pop';p.textContent='+'+pts;p.style.left=d.x+'px';p.style.top=d.y+'px';
     rArea.appendChild(p);setTimeout(()=>p.remove(),700);
     remove(d);collect(d.it);
@@ -711,7 +875,7 @@ const Rain=(()=>{
   onEnter(rInput,()=>{const v=rInput.value;if(!v.trim())return;
     if(!tryMatch(v,false)){rInput.classList.add('shake');setTimeout(()=>rInput.classList.remove('shake'),300);clearInput(rInput);aim();}});
   function start(){
-    drops.forEach(d=>d.el.remove());drops=[];score=0;level=1;lives=5;cleared=0;spawnT=0;
+    drops.forEach(d=>d.el.remove());drops=[];score=0;level=1;lives=5;cleared=0;spawnT=0;combo=0;slowUntil=0;rCombo.textContent=0;rArea.classList.remove('frozen');
     rScore.textContent=0;rLevel.textContent=1;hearts();rOverlay.style.display='none';
     running=true;paused=false;lastT=performance.now();clearInput(rInput);rInput.focus();raf=requestAnimationFrame(frame);
     if(innerWidth<720)setTimeout(()=>rArea.scrollIntoView({block:'start',behavior:'smooth'}),350);
@@ -720,12 +884,12 @@ const Rain=(()=>{
     running=false;cancelAnimationFrame(raf);
     let best='';if(score>save.best.rain){save.best.rain=score;persist();best='최고 점수 갱신!';}
     rBest.textContent=save.best.rain;
-    rOverlay.innerHTML=`<h2>야호 끝!</h2><p>점수 <b>${score}</b> · ${level}단계 · ${cleared}야호 터뜨림<br>${best}</p><button class="btn primary" id="rStart2">다시 하기</button>`;
-    rOverlay.style.display='flex';document.getElementById('rStart2').onclick=start;
+    rOverlay.innerHTML=`<h2>야호 끝!</h2><p>점수 <b>${score}</b> · ${level}단계 · ${cleared}야호 터뜨림<br>${best}</p><button class="btn primary" id="rStart2">다시 하기</button><button class="btn ghost" id="tStart2">60초 도전</button>`;
+    rOverlay.style.display='flex';document.getElementById('rStart2').onclick=start;document.getElementById('tStart2').onclick=()=>startTimed();updateSummary();
   }
   function pause(){if(running&&!paused){paused=true;cancelAnimationFrame(raf);}}
   function resume(){if(running&&paused){paused=false;lastT=performance.now();raf=requestAnimationFrame(frame);}rInput.focus();}
-  rStart.onclick=start;
+  rStart.onclick=start;tStart.onclick=()=>startTimed();
   document.addEventListener('visibilitychange',()=>{if(document.hidden)pause();else if(curTab==='rain')resume();});
   return {pause,resume};
 })();
@@ -744,11 +908,27 @@ function renderBoard(){
 let resetArm=0;
 bReset.onclick=()=>{
   if(Date.now()-resetArm>3000){resetArm=Date.now();bReset.textContent='한 번 더 누르면 초기화';setTimeout(()=>bReset.textContent='기록 초기화',3000);return;}
-  save=fresh();persist();renderBoard();updateSummary();rBest.textContent=0;bReset.textContent='기록 초기화';
+  save=Object.assign(fresh(),{theme:save.theme});persist();renderBoard();updateSummary();rBest.textContent=0;bReset.textContent='기록 초기화';
 };
+
+/* ===================== 전국 일주 ===================== */
+const tourLen=i=>i<5?'m':(i<12?'x':'l');
+const tourTarget=i=>COARSE?70+i*5:150+i*10;
+function renderTour(){
+  tourSum.textContent=`${tourN()}/17 통과 · 별 ${starN()}/51 · 거제에서 서울까지`;
+  tourList.innerHTML=TOUR.map((id,i)=>{const r=REGIONS.find(x=>x.id===id),st=save.tour[id]||0,open=i===0||(save.tour[TOUR[i-1]]||0)>0;
+    return `<button class="stage ${open?'':'lock'} ${st?'clear':''}" data-i="${i}" ${open?'':'disabled'}><span class="no">${i+1}</span><span class="nm">${r.name}<small>${open?`8문장 · 목표 ${tourTarget(i)}타`:'앞 지역을 통과하면 열려요'}</small></span><span class="st">${'★'.repeat(st)}<i>${'★'.repeat(3-st)}</i></span></button>`;}).join('');
+  tourList.querySelectorAll('.stage:not(.lock)').forEach(b=>b.onclick=()=>{W.custom=null;W.timed=null;W.stage={i:+b.dataset.i,id:TOUR[+b.dataset.i]};go('word');wNewRound();});
+}
 
 /* ===================== 기록 ===================== */
 function renderRec(){
+  const lv=lvOf(save.xp),a=lvXp(lv),b=lvXp(lv+1),xp=save.xp||0;
+  recLv.innerHTML=`<h3>레벨</h3><div class="lvrow"><div class="big-num">Lv.${lv}</div><div style="flex:1"><b>${titleOf(lv)}</b>
+    <div class="progress" style="margin-top:8px"><i style="width:${Math.round((xp-a)/(b-a)*100)}%"></i></div>
+    <p>다음 레벨까지 ${b-xp} · 최고 ${bestCpm()}타 · 60초 최고 ${save.best.time}문장 · 야호비 최고 ${save.best.rain}점</p></div></div>`;
+  achCnt.textContent=`${Object.keys(save.ach).length}/${ACH.length}`;
+  recAch.innerHTML=ACH.map(([id,name,desc])=>`<div class="${save.ach[id]?'got':''}"><b>${name}</b>${desc}</div>`).join('');
   const t=save.days[dayKey()]||0,s=streak();
   recToday.textContent=t;recBar.style.width=Math.min(100,t/GOAL*100)+'%';
   recStreak.textContent=(t>=GOAL?'오늘 목표 달성! ':`목표까지 ${GOAL-t}야호 남았어요. `)+(s?`${s}일 연속 연습 중 · `:'')+`지금까지 ${save.yaho}야호`;
@@ -765,6 +945,12 @@ recDrill.onclick=()=>{
   const pool=POOL.filter(x=>strokes(x.city).some(j=>set.has(j)));
   if(!pool.length)return;W.custom=pool;go('word');wNewRound();
 };
+
+/* 다크 모드 */
+function applyTheme(){const t=save.theme||(matchMedia('(prefers-color-scheme:dark)').matches?'dark':'light');
+  document.documentElement.dataset.theme=t;thBtn.textContent=t==='dark'?'라이트':'다크';document.querySelector('meta[name=theme-color]').content=t==='dark'?'#1d1819':'#fff7f1';}
+thBtn.onclick=()=>{save.theme=document.documentElement.dataset.theme==='dark'?'light':'dark';persist();applyTheme();};
+applyTheme();
 
 /* 전체화면 */
 (()=>{const el=document.documentElement,req=el.requestFullscreen||el.webkitRequestFullscreen;
@@ -783,7 +969,7 @@ document.getElementById('p-long').addEventListener('mousedown',e=>{if(!e.target.
 updateSummary();wNewRound();
 const gj=POOL.find(x=>x.key==='gyeongnam:거제');W.list[0]={...gj,text:'거제에 도착했다, 거제 야호!',extra:[]};wRender();
 lNew();
-setTimeout(()=>wInput.focus(),100);
+go('tour');
 </script>
 </body>
 </html>
